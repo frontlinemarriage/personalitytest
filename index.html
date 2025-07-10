@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Assessment</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src=https://cdn.tailwindcss.com></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        .question-card {
+            background-color: #f8fafc; /* Lighter background for question cards */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e1; /* Light gray border */
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .option-label:hover {
+            background-color: #e2e8f0; /* Hover effect */
+            border-color: #94a3b8;
+        }
+        .option-label input[type="radio"]:checked + span {
+            font-weight: 600;
+            color: #2563eb; /* Blue text for selected option */
+        }
+        .option-label input[type="radio"]:checked {
+            accent-color: #2563eb; /* Blue accent for radio button */
+        }
+        .result-card {
+            background-color: #ecfdf5; /* Light green for results */
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #a7f3d0; /* Green border */
+        }
+        .result-card h3 {
+            color: #047857; /* Dark green heading */
+        }
+        .result-card p {
+            color: #065f46; /* Medium green text */
+        }
+        .button-primary {
+            background-color: #2563eb; /* Blue button */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+        .button-primary:hover {
+            background-color: #1d4ed8; /* Darker blue on hover */
+        }
+        .button-secondary {
+            background-color: #e2e8f0; /* Light gray button */
+            color: #475569;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .button-secondary:hover {
+            background-color: #cbd5e1; /* Darker gray on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container">
+        <h2 class="text-3xl font-bold text-center text-blue-700 mb-6">Discover Your Unique Wiring</h2>
+        <p class="text-center text-gray-600 mb-8">
+            This assessment is designed to help you understand your dominant personality type based on Dr. Gary Smalley's four animal archetypes. Select the statement in each question that best describes you.
+        </p>
+ 
+        <form id="personality-quiz">
+            <!-- Question 1 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">1. When faced with a new challenge, my first instinct is to:</p>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="lion" class="mr-2">
+                    <span>Take charge and lead the way.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="otter" class="mr-2">
+                    <span>Brainstorm exciting new ideas and possibilities.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="golden_retriever" class="mr-2">
+                    <span>Assess the situation calmly and seek harmony.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="beaver" class="mr-2">
+                    <span>Analyze all the details and plan a precise approach.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 2 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">2. In social situations, I am typically:</p>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="lion" class="mr-2">
+                    <span>Direct, assertive, and enjoy leading conversations.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="otter" class="mr-2">
+                    <span>The life of the party, energetic, and love to entertain.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="golden_retriever" class="mr-2">
+                    <span>Quiet, observant, and prefer to listen and support.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="beaver" class="mr-2">
+                    <span>Reserved, analytical, and prefer meaningful, in-depth discussions.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 3 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">3. When working on a project, my focus is on:</p>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="lion" class="mr-2">
+                    <span>Achieving results and reaching the goal efficiently.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="otter" class="mr-2">
+                    <span>Generating creative solutions and keeping things fun.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="golden_retriever" class="mr-2">
+                    <span>Ensuring everyone gets along and the process is smooth.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="beaver" class="mr-2">
+                    <span>Accuracy, quality, and meticulous attention to detail.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 4 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">4. My typical response to conflict is to:</p>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="lion" class="mr-2">
+                    <span>Address it directly and seek a quick resolution.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="otter" class="mr-2">
+                    <span>Try to lighten the mood or distract from the tension.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="golden_retriever" class="mr-2">
+                    <span>Avoid it if possible, or try to mediate and keep the peace.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="beaver" class="mr-2">
+                    <span>Analyze the problem logically and seek a fair, factual solution.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 5 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">5. When making decisions, I tend to be:</p>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="lion" class="mr-2">
+                    <span>Decisive and confident, trusting my instincts.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="otter" class="mr-2">
+                    <span>Spontaneous and open to new possibilities, sometimes changing my mind.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="golden_retriever" class="mr-2">
+                    <span>Thoughtful and cautious, considering everyone's feelings.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="beaver" class="mr-2">
+                    <span>Thorough and analytical, gathering all facts before deciding.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 6 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">6. My greatest strength is often my:</p>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="lion" class="mr-2">
+                    <span>Ability to lead and achieve goals.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="otter" class="mr-2">
+                    <span>Enthusiasm and ability to inspire others.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="golden_retriever" class="mr-2">
+                    <span>Patience and ability to create a peaceful environment.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="beaver" class="mr-2">
+                    <span>Attention to detail and commitment to quality.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 7 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">7. My biggest weakness can sometimes be my:</p>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="lion" class="mr-2">
+                    <span>Impatience or tendency to be demanding.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="otter" class="mr-2">
+                    <span>Disorganization or tendency to get easily distracted.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="golden_retriever" class="mr-2">
+                    <span>Indecisiveness or tendency to avoid conflict.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="beaver" class="mr-2">
+                    <span>Perfectionism or tendency to be overly critical.</span>
+                </label>
+            </div>
+ 
+            <!-- Question 8 -->
+            <div class="question-card">
+                <p class="font-semibold text-lg mb-3">8. When I'm stressed, I tend to:</p>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="lion" class="mr-2">
+                    <span>Become more controlling or assertive.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="otter" class="mr-2">
+                    <span>Seek out fun distractions or become more talkative.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="golden_retriever" class="mr-2">
+                    <span>Withdraw and become quiet, or try to keep the peace at all costs.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="beaver" class="mr-2">
+                    <span>Overthink, worry about details, or become critical.</span>
+                </label>
+            </div>
+ 
+            <div class="flex justify-center mt-8">
+                <button type="submit" class="button-primary">Calculate My Personality</button>
+                <button type="button" id="resetButton" class="button-secondary">Reset</button>
+            </div>
+        </form>
+ 
+        <div id="results" class="result-card hidden">
+            <h3 class="text-2xl font-bold mb-4">Your Dominant Personality Type is:</h3>
+            <p id="personality-type" class="text-4xl font-extrabold text-blue-800 mb-4"></p>
+            <p id="personality-description" class="text-lg text-gray-700"></p>
+        </div>
+    </div>
+ 
+    <script>
+        // Store the personality types and their descriptions
+        const personalityTypes = {
+            lion: {
+                name: 'The Lion',
+                description: 'You are a natural leader, decisive, and goal-oriented. You thrive on challenges and are driven to achieve results. You are confident and often take charge, but may need to work on patience and sensitivity towards others.'
+            },
+            otter: {
+                name: 'The Otter',
+                description: 'You are enthusiastic, optimistic, and love to have fun. You are charismatic, social, and enjoy inspiring others with your creative ideas. You bring joy and spontaneity, but might need to focus on organization and follow-through.'
+            },
+            golden_retriever: {
+                name: 'The Golden Retriever',
+                description: 'You are loyal, patient, and calm, bringing stability and peace to those around you. You are empathetic, a great listener, and value harmony. You are supportive, but may need to practice assertiveness and expressing your own needs.'
+            },
+            beaver: {
+                name: 'The Beaver',
+                description: 'You are detail-oriented, analytical, and highly conscientious. You value accuracy, quality, and thorough planning. You are thoughtful and precise, but may need to guard against perfectionism and being overly critical.'
+            }
+        };
+ 
+        // Get elements from the DOM
+        const quizForm = document.getElementById('personality-quiz');
+        const resultsDiv = document.getElementById('results');
+        const personalityTypeElem = document.getElementById('personality-type');
+        const personalityDescriptionElem = document.getElementById('personality-description');
+        const resetButton = document.getElementById('resetButton');
+ 
+        // Event listener for form submission
+        quizForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+ 
+            const answers = {};
+            // Iterate through each question (q1, q2, ...)
+            for (let i = 1; i <= 8; i++) {
+                const questionName = `q${i}`;
+                // Get the selected radio button for the current question
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (selectedOption) {
+                    answers[questionName] = selectedOption.value; // Store the value (e.g., 'lion', 'otter')
+                } else {
+                    // If any question is not answered, show an error message and stop
+                    alert('Please answer all questions before submitting.');
+                    return;
+                }
+            }
+ 
+            // Calculate scores for each personality type
+            const scores = {
+                lion: 0,
+                otter: 0,
+                golden_retriever: 0,
+                beaver: 0
+            };
+ 
+            // Tally scores based on answers
+            for (const question in answers) {
+                const type = answers[question];
+                scores[type]++;
+            }
+ 
+            // Determine the dominant personality type
+            let dominantType = '';
+            let maxScore = -1;
+            let tie = false;
+ 
+            for (const type in scores) {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    dominantType = type;
+                    tie = false; // Reset tie flag if a new max score is found
+                } else if (scores[type] === maxScore) {
+                    tie = true; // Set tie flag if another type has the same max score
+                }
+            }
+ 
+            // Display results
+            resultsDiv.classList.remove('hidden'); // Show the results section
+ 
+            if (tie) {
+                // Handle ties by listing all tied types
+                const tiedTypes = Object.keys(scores).filter(type => scores[type] === maxScore);
+                const tiedNames = tiedTypes.map(type => personalityTypes[type].name).join(' and ');
+                personalityTypeElem.textContent = `A Blend of ${tiedNames}`;
+                personalityDescriptionElem.textContent = `You show strong characteristics of multiple types. Explore the descriptions for ${tiedNames} to understand your unique blend!`;
+            } else {
+                // Display the dominant personality type and its description
+                personalityTypeElem.textContent = personalityTypes[dominantType].name;
+                personalityDescriptionElem.textContent = personalityTypes[dominantType].description;
+            }
+ 
+            // Scroll to results for better UX
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+ 
+        // Event listener for reset button
+        resetButton.addEventListener('click', function() {
+            quizForm.reset(); // Reset all form fields
+            resultsDiv.classList.add('hidden'); // Hide the results section
+            // Scroll back to the top of the form
+            quizForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+</body>
+</html>
+ 
+ 
+ 
